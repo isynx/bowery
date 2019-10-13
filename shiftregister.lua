@@ -17,7 +17,7 @@ function init()
     input[2]{ mode      = 'change'
             , direction = 'rising'
             }
-    for i=1,reg_LEN do
+    for i=1,reg_LEN + 2 do
         reg[i] = input[1].volts
     end
     ii.pullup(true)
@@ -46,6 +46,6 @@ end
 input[2].change = function()
     capture = input[1].volts
     table.remove(reg)
-    table.insert(reg, 1, input[1].volts)
+    table.insert(reg, 1, capture)
     update(reg)
 end
